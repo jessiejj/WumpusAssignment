@@ -8,8 +8,11 @@ public class Game { //has 2d array of GameItem called board
 	int row = 4;
 	int col = 4;
 	private GameItem[][] board;
-	public int playerX = 0;
-	public int playerY = 0;
+	public int playerScore = 0;
+	public int playerPositionX = 0; // x coordinates
+	public int playerPositionY = 0; //y coordinates
+	
+
 	
 	public void runGame() {
 		// where does set board go?
@@ -18,23 +21,33 @@ public class Game { //has 2d array of GameItem called board
 		// present menu
 		//process user decision
 		board = new GameItem[4][4];
+		setBoard();
+		display();
+		menu();
 			
 	}
 	
-	
+	//instantiates objects on the game board
 	public void setBoard() {
 		for (row = 0; row < board.length; row++) {
 			for (col = 0; col < board.length; col++) {
 				this.board[row][col] = new GameItem(row, col);
 			}
+//			Random  randomGenerator  =  new  Random(); 
+//			randomly place items not where player starts [0][0]
+//			place wumpus first
+//			place pits checking for wumpus
+//			place gold checking for wumpus and pits
 		}
 	}
 	
+	//display the game board
 	public void display() {
 		board = new GameItem[4][4];
 		for(row = 0; row < board.length; row++) {
 			for(col = 0; col < board.length; col++) {
-				setBoard();
+//				setBoard();
+				System.out.print(board[row][col] + " ");
 			}
 			System.out.println();
 		}
