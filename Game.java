@@ -4,13 +4,15 @@
 public class Game { //has 2d array of GameItem called board
 	
 	Scanner input = new Scanner(System.in);
-	int selection;
+	int selection;					// user menu choice
 	int row = 4;
 	int col = 4;
 	private GameItem[][] board;
 	public int playerScore = 0;
-	public int playerPositionX = 0; // x coordinates
-	public int playerPositionY = 0; //y coordinates
+	public int playerPosiX = 0; // x coordinates
+	public int playerPositY = 0; // y coordinates
+	public int wumpPosiX;
+	public int wumpPosiY;
 	
 
 	
@@ -61,7 +63,7 @@ public class Game { //has 2d array of GameItem called board
 	    		System.out.println("1. Move player left");
 	    		System.out.println("2. Move player right");
 	    		System.out.println("3. Move player up");
-	    		System.out.println("4. Move player down 5");
+	    		System.out.println("4. Move player down");
 	    		System.out.println("9. Quit");
 	    		selection = input.nextInt();
 	    			switch(selection)
