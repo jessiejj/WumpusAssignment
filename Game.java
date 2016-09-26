@@ -11,8 +11,7 @@ public class Game { //has 2d array of GameItem called board
 	public int playerScore = 0;
 	public int playerPosiX = 0; // x coordinates
 	public int playerPositY = 0; // y coordinates
-	public int wumpPosiX;
-	public int wumpPosiY;
+
 	
 
 	
