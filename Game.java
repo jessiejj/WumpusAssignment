@@ -5,24 +5,26 @@ public class Game { //has 2d array of GameItem called board
 	
 	Scanner input = new Scanner(System.in);
 	int selection;					// user menu choice
-	int row = 4;
-	int col = 4;
-	private GameItem[][] board;
+	int row;
+	int col;
+	private GameItem[][] board = new GameItem[4][4];
 	public int playerScore = 0;
-	public int playerPosiX = 0; // x coordinates
-	public int playerPositY = 0; // y coordinates
-	public int wX;
-	public int wY;
+	public int playerPosiX = 0;		 // x coordinates
+	public int playerPositY = 0; 	// y coordinates
+	public int wX = 1;
+	public int wY = 1;
 	
 
 	
 	public void runGame() {
 		// where does set board go?
 		//display the board
+		//check score
 		//sense nearby
 		// present menu
 		//process user decision
-		board = new GameItem[4][4];
+		//display board again
+//		board = new GameItem[4][4];
 		setBoard();
 		display();
 		menu();
@@ -31,11 +33,13 @@ public class Game { //has 2d array of GameItem called board
 	
 	//instantiates objects on the game board
 	public void setBoard() {
+		board = new GameItem[4][4];
 		for (row = 0; row < board.length; row++) {
 			for (col = 0; col < board.length; col++) {
 				this.board[row][col] = new GameItem(row, col);
 			}
 		}
+//		board[wX][wY] = new Wumpus('W');
 		// while loop
 //		Random  randomGenerator  =  new  Random(); 
 //		randomly place items not where player starts [0][0]
@@ -50,7 +54,6 @@ public class Game { //has 2d array of GameItem called board
 		board = new GameItem[4][4];
 		for(row = 0; row < board.length; row++) {
 			for(col = 0; col < board.length; col++) {
-//				setBoard();
 				System.out.print(board[row][col] + " ");
 			}
 			System.out.println();
