@@ -11,7 +11,8 @@ public class Game { //has 2d array of GameItem called board
 	public int playerScore = 0;
 	public int playerPosiX = 0; // x coordinates
 	public int playerPositY = 0; // y coordinates
-
+	public int wX;
+	public int wY;
 	
 
 	
@@ -34,12 +35,14 @@ public class Game { //has 2d array of GameItem called board
 			for (col = 0; col < board.length; col++) {
 				this.board[row][col] = new GameItem(row, col);
 			}
-//			Random  randomGenerator  =  new  Random(); 
-//			randomly place items not where player starts [0][0]
-//			place wumpus first
-//			place pits checking for wumpus
-//			place gold checking for wumpus and pits
 		}
+		// while loop
+//		Random  randomGenerator  =  new  Random(); 
+//		randomly place items not where player starts [0][0]
+//		place wumpus first
+//		place pits checking for wumpus
+//		place gold checking for wumpus and pits
+//		this.board[wX][wY] = new Wumpus('W');
 	}
 	
 	//display the game board
