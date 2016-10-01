@@ -2,11 +2,12 @@ public class GameItem {
 	
 public GameItem gameItem;
 
-	int x;
-	int y;
-
+	int row;
+	int col;
+	char c = '0';
+	
 	GameItem(char c) {
-		System.out.print(c);
+
 	}
 	
 	public GameItem(int row, int col) {
@@ -14,6 +15,6 @@ public GameItem gameItem;
 	}
 
 	public void display() {
-		
+		Character.toString(c);
 	}
 }

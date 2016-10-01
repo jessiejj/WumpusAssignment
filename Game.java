@@ -17,7 +17,7 @@ public class Game { //has 2d array of GameItem called board
 
 	
 	public void runGame() {
-		// where does set board go?
+		// setBoard
 		//display the board
 		//check score
 		//sense nearby
@@ -27,16 +27,18 @@ public class Game { //has 2d array of GameItem called board
 //		board = new GameItem[4][4];
 		setBoard();
 		display();
+//		checkScore();
 		menu();
 			
 	}
 	
+	//instantiates game board
 	//instantiates objects on the game board
 	public void setBoard() {
 		board = new GameItem[4][4];
 		for (row = 0; row < board.length; row++) {
 			for (col = 0; col < board.length; col++) {
-				this.board[row][col] = new GameItem(row, col);
+				board[row][col] = new GameItem(row, col);
 			}
 		}
 //		board[wX][wY] = new Wumpus('W');
@@ -51,7 +53,6 @@ public class Game { //has 2d array of GameItem called board
 	
 	//display the game board
 	public void display() {
-		board = new GameItem[4][4];
 		for(row = 0; row < board.length; row++) {
 			for(col = 0; col < board.length; col++) {
 				System.out.print(board[row][col] + " ");
