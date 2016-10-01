@@ -42,7 +42,9 @@ public class Game { //has 2d array of GameItem called board
 			}
 		}
 		// while loop
-//		Random  randomGenerator  =  new  Random(); 
+//		Random  randomGenerator  =  new  Random();
+//		int row = randomGenerator.nextInt(3) + 1;
+//		int col = randomGenerator.nextInt(3) + 1;
 //		randomly place items not where player starts [0][0]
 //		place wumpus first
 //		place pits checking for wumpus
@@ -91,10 +93,14 @@ public class Game { //has 2d array of GameItem called board
 	
 	
 	public void senseNearby() {
-		// if else player location?
-	
+//		 if else player location?
+//		System.out.println("The is a vile smell on the air");
+//		System.out.println("You sense a faint glitter");
+//		System.out.println("You sense a breeze");
 	}
 
-
+//	System.out.println("The Wumpus ate you!");	
+//	System.out.println("You found a piece of gold!");
+//	System.out.println("You fell in a pit and died!");	
 
 }

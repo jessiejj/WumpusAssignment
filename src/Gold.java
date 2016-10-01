@@ -5,5 +5,5 @@ public class Gold extends GameItem {
 		super(c);
 	}
 
-	
+
 }
