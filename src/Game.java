@@ -1,5 +1,6 @@
  import java.util.*;
  import java.util.Scanner;
+ import java.util.Random;
 
 public class Game { //has 2d array of GameItem called board
 	
@@ -13,7 +14,7 @@ public class Game { //has 2d array of GameItem called board
 	public int playerPositY = 0; 	// y coordinates
 	public int wX = 1;
 	public int wY = 1;
-	
+	 Random randomGenerator = new Random();
 
 	
 	public void runGame() {
@@ -31,16 +32,23 @@ public class Game { //has 2d array of GameItem called board
 		menu();
 			
 	}
-	
-	//instantiates game board
-	//instantiates objects on the game board
 	public void setBoard() {
 		board = new GameItem[4][4];
-		for (row = 0; row < board.length; row++) {
-			for (col = 0; col < board.length; col++) {
-				board[row][col] = new GameItem(row, col);
-			}
+		while (true) {
+			this.board[row][col] = new Wumpus('W', row, col);
+			int row = randomGenerator.nextInt(3) + 1;
+			int col = randomGenerator.nextInt(3) + 1;
+
 		}
+	//instantiates game board
+	//instantiates objects on the game board
+//	public void setBoard() {
+//		board = new GameItem[4][4];
+//		for (row = 0; row < board.length; row++) {
+//			for (col = 0; col < board.length; col++) {
+//				board[row][col] = new GameItem(row, col);
+//			}
+//		}
 		// while loop
 //		Random  randomGenerator  =  new  Random();
 //		int row = randomGenerator.nextInt(3) + 1;
