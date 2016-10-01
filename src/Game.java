@@ -96,25 +96,5 @@ public class Game { //has 2d array of GameItem called board
 	}
 
 
-	
-	
-	
-	
-	
-	
-	// int[][] grid = new int[4][4];
-	/*
-	int[][] gameBoard = {
-			{1,2,3,4},
-			{5,6,7,8},
-			{8,10,11,12},
-			{13,14,15,16}};
-	
-	*/
-	/*
-	for (int i=0; i<4; i++) //row
-		for (int j=0; j<4; j++) //collumn
-			grid[i][j] = i=j;
-	*/
 
 }
