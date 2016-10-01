@@ -41,7 +41,6 @@ public class Game { //has 2d array of GameItem called board
 				board[row][col] = new GameItem(row, col);
 			}
 		}
-//		board[wX][wY] = new Wumpus('W');
 		// while loop
 //		Random  randomGenerator  =  new  Random(); 
 //		randomly place items not where player starts [0][0]
