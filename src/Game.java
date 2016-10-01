@@ -3,10 +3,10 @@
 
 public class Game { //has 2d array of GameItem called board
 	
-	Scanner input = new Scanner(System.in);
-	int selection;					// user menu choice
-	int row;
-	int col;
+	public Scanner sc = new Scanner(System.in);
+	private int selection;					// user menu choice
+	private static int row;
+	private static int col;
 	private GameItem[][] board = new GameItem[4][4];
 	public int playerScore = 0;
 	public int playerPosiX = 0;		 // x coordinates
@@ -31,6 +31,7 @@ public class Game { //has 2d array of GameItem called board
 		menu();
 			
 	}
+	
 	
 	//instantiates game board
 	//instantiates objects on the game board
@@ -74,6 +75,11 @@ public class Game { //has 2d array of GameItem called board
 	    			switch(selection)
 	    			{
 	    			case 1:
+	    				Scanner sc = new Scanner(System.in);
+	    				playerChoice = sc.nextInt();
+	    				if (playerChoice = 1){
+	    					//move left
+	    				}
 	    				break;
 	    			case 2:
 	    				break;
