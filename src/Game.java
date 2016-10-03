@@ -15,8 +15,7 @@ public class Game { //has 2d array of GameItem called board
 	public int playerPosiY;
 	public boolean isAlive = true;
 	Random randomGenerator = new Random();
-	public String Player = "*";
-
+	public String player = "*";
 	
 	public void runGame() {
 		// setBoard
@@ -80,9 +79,15 @@ public class Game { //has 2d array of GameItem called board
 					board[cGX][cGY] = new ClearGround('.');
 					clearGroundCount ++;
 				}
-
 		}
 //		generate play position
+//		while (true){
+//			int playerPosiX = randomGenerator.nextInt(4);
+//			int playerPosiY = randomGenerator.nextInt(4);
+//			if (board[playerPosiX][playerPosiY].c=='.'){
+//				
+//			}
+//		}
 	}
 	
 	//display the game board
@@ -99,12 +104,13 @@ public class Game { //has 2d array of GameItem called board
 		// switch based on other menus i've got
 		boolean menuActive = true; // menu loop
 	    	while (menuActive){
-	    		System.out.println("=====Wumpus==== ");
+	    		System.out.println("=====Wumpus===== ");
 	    		System.out.println("1. Move player left");
 	    		System.out.println("2. Move player right");
 	    		System.out.println("3. Move player up");
 	    		System.out.println("4. Move player down");
 	    		System.out.println("9. Quit");
+	    		System.out.println("================");
 	    		selection = input.nextInt();
 	    			switch(selection)
 	    			{
