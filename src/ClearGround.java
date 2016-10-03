@@ -9,8 +9,8 @@ public class ClearGround extends GameItem {
 	}
 
 	@Override
-	public void display() {
-		Character.toString(c);
+	public char display() {
+		return c;
 		
 	}
 

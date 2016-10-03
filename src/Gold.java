@@ -7,9 +7,8 @@ public class Gold extends GameItem {
 	}
 
 	@Override
-	public void display() {
-		// TODO Auto-generated method stub
-		
+	public char display() {
+		return c;
 	}
 
 

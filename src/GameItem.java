@@ -7,5 +7,7 @@ public abstract class GameItem {
 		this.c = c;
 	}
 
-	public abstract void display();
+	public char display() {
+		return c;
+	}
 }

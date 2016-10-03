@@ -15,6 +15,7 @@ public class Game { //has 2d array of GameItem called board
 	public int playerPosiY;
 	public boolean isAlive = true;
 	Random randomGenerator = new Random();
+	public String Player = "*";
 
 	
 	public void runGame() {
@@ -88,7 +89,7 @@ public class Game { //has 2d array of GameItem called board
 	public void display() {
 		for(row = 0; row < board.length; row++) {
 			for(col = 0; col < board.length; col++) {
-				System.out.print(board[row][col] + " ");
+				System.out.print(board[row][col].display() + " ");
 			}
 			System.out.println();
 		}

@@ -6,8 +6,7 @@ public class Wumpus extends GameItem {
 		super(c);
 	}
 
-	public void display() {
-		System.out.print(c);
+	public char display() {
+		return c;
 	}
 }
-//Character.toString(c);

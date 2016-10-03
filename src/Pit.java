@@ -6,11 +6,8 @@ public class Pit extends GameItem {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void display() {
-		// TODO Auto-generated method stub
-		
+	public char display() {
+		return c;
 	}
-
 
 }
