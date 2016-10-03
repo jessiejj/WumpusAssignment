@@ -12,7 +12,8 @@ public class Game { //has 2d array of GameItem called board
 	public int playerScore = 0;
 	// player x and y coords
 	public int playerPosiX;
-	public int playerPositY;
+	public int playerPosiY;
+	public boolean isAlive = true;
 	Random randomGenerator = new Random();
 
 	
@@ -24,11 +25,13 @@ public class Game { //has 2d array of GameItem called board
 		// present menu
 		//process user decision
 		//display board again
-//		board = new GameItem[4][4];
 		setBoard();
-		display();
-//		checkScore();
-		menu();
+		while (isAlive == true) {
+			display();
+			checkScore();
+			menu();
+		}
+
 			
 	}
 
@@ -78,6 +81,7 @@ public class Game { //has 2d array of GameItem called board
 				}
 
 		}
+//		generate play position
 	}
 	
 	//display the game board
