@@ -1,8 +1,9 @@
 
 public class Pit extends GameItem {
 
-	Pit(char c) {
+	public Pit(char c) {
 		super(c);
+		// TODO Auto-generated constructor stub
 	}
 
 

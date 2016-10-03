@@ -2,13 +2,16 @@ public class GameItem {
 	
 public GameItem gameItem;
 	
-	int row;
-	int col;
-	char c = 'O';
+	char c;
+//	int row;
+//	int col;
+	
 
-	GameItem(char c) {
-
+	public GameItem(char c) {
+		super();
+		this.c = c;
 	}
+
 
 	public void display() {
 		Character.toString(c);

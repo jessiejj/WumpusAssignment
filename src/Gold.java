@@ -1,8 +1,9 @@
 
 public class Gold extends GameItem {
 
-	Gold(char c) {
+	public Gold(char c) {
 		super(c);
+		// TODO Auto-generated constructor stub
 	}
 
 

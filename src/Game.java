@@ -10,11 +10,27 @@ public class Game { //has 2d array of GameItem called board
 	int col;
 	private GameItem[][] board = new GameItem[4][4];
 	public int playerScore = 0;
-	public int playerPosiX = 0;		 // x coordinates
-	public int playerPositY = 0; 	// y coordinates
-	public int wX = 1;
-	public int wY = 1;
-	 Random randomGenerator = new Random();
+	// play x and y coords
+	public int playerPosiX;
+	public int playerPositY;
+	// wumpus x and y coords
+	public int wX;				
+	public int wY;		
+	// pit 1, 2, 3 x and y coords
+	public int px1;
+	public int py1;
+	public int px2;
+	public int py2;
+	public int px3;
+	public int py3;
+	// gold 1, 2, and 3 x and y coords
+	public int gx1;
+	public int gy1;
+	public int gx2;
+	public int gy2;
+	public int gx3;
+	public int gy3;
+	Random randomGenerator = new Random();
 
 	
 	public void runGame() {
@@ -43,12 +59,16 @@ public class Game { //has 2d array of GameItem called board
 	//instantiates game board
 	//instantiates objects on the game board
 	public void setBoard() {
-		board = new GameItem[4][4];
+//		board = new GameItem[4][4]; // would make the whole board GameItem
 		for (row = 0; row < board.length; row++) {
 			for (col = 0; col < board.length; col++) {
-				board[row][col] = new Wumpus('W', row, col);
-			}
+//				board[row][col] = new ClearGround('.');
+			}	
 		}
+		int wX = randomGenerator.nextInt(4);
+		int wY = randomGenerator.nextInt(4);
+		board[wX][wY] = new Wumpus('W');
+		
 		// while loop
 //		Random  randomGenerator  =  new  Random();
 //		int row = randomGenerator.nextInt(3) + 1;

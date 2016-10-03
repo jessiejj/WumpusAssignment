@@ -1,9 +1,11 @@
 
 public class ClearGround extends GameItem {
-	
-	ClearGround(char c) {
-		super(c);
 
+	char c = '.';
+	
+	public ClearGround(char c) {
+		super(c);
+		// TODO Auto-generated constructor stub
 	}
 
 }
