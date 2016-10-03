@@ -1,5 +1,5 @@
-
 public class Wumpus extends GameItem {
+	
 	char c = 'W';
 	
 	public Wumpus(char c) {
@@ -7,6 +7,7 @@ public class Wumpus extends GameItem {
 	}
 
 	public void display() {
-		Character.toString(c);
+		System.out.print(c);
 	}
 }
+//Character.toString(c);
