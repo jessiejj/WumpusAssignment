@@ -10,27 +10,9 @@ public class Game { //has 2d array of GameItem called board
 	int col;
 	private GameItem[][] board = new GameItem[4][4];
 	public int playerScore = 0;
-	// play x and y coords
+	// player x and y coords
 	public int playerPosiX;
 	public int playerPositY;
-	// wumpus x and y coords
-//	public int wX;				
-//	public int wY;		
-	// pit 1, 2, 3 x and y coords
-	public int px1;
-	public int py1;
-	public int px2;
-	public int py2;
-	public int px3;
-	public int py3;
-	// gold 1, 2, and 3 x and y coords
-	public int gx1;
-	public int gy1;
-	public int gx2;
-	public int gy2;
-	public int gx3;
-	public int gy3;
-	// wondering if you can use the loop to fill in the rest of the null spaces with ClearGround
 	Random randomGenerator = new Random();
 
 	
@@ -55,7 +37,6 @@ public class Game { //has 2d array of GameItem called board
 	public void setBoard() {
 		for (row = 0; row < board.length; row++) {
 			for (col = 0; col < board.length; col++) {
-//				board[row][col] = new ClearGround('.');
 			}	
 		}
 //		check if the index generated is null, if yes place Wumpus
@@ -136,6 +117,10 @@ public class Game { //has 2d array of GameItem called board
 	    				System.out.println("Invalid selection");	
 	    		}
 	    	}
+	}
+	
+	int checkScore() {
+		return playerScore;
 	}
 	
 	
