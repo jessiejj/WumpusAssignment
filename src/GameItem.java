@@ -1,4 +1,4 @@
-public class GameItem {
+public abstract class GameItem {
 	
 public GameItem gameItem;
 	
@@ -13,7 +13,7 @@ public GameItem gameItem;
 	}
 
 
-	public void display() {
-		Character.toString(c);
+	public abstract void display() {
+
 	}
 }

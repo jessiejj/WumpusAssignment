@@ -14,8 +14,8 @@ public class Game { //has 2d array of GameItem called board
 	public int playerPosiX;
 	public int playerPositY;
 	// wumpus x and y coords
-	public int wX;				
-	public int wY;		
+//	public int wX;				
+//	public int wY;		
 	// pit 1, 2, 3 x and y coords
 	public int px1;
 	public int py1;
@@ -30,6 +30,7 @@ public class Game { //has 2d array of GameItem called board
 	public int gy2;
 	public int gx3;
 	public int gy3;
+	// wondering if you can use the loop to fill in the rest of the null spaces with ClearGround
 	Random randomGenerator = new Random();
 
 	
@@ -48,31 +49,32 @@ public class Game { //has 2d array of GameItem called board
 		menu();
 			
 	}
-//	public void setBoard() {
-//		board = new GameItem[4][4];
-//		while (true) {
-//			this.board[row][col] = new Wumpus('W', row, col);
-//			int row = randomGenerator.nextInt(3) + 1;
-//			int col = randomGenerator.nextInt(3) + 1;
-//
-//		}
+
 	//instantiates game board
 	//instantiates objects on the game board
 	public void setBoard() {
 //		board = new GameItem[4][4]; // would make the whole board GameItem
 		for (row = 0; row < board.length; row++) {
 			for (col = 0; col < board.length; col++) {
-//				board[row][col] = new ClearGround('.');
+//				board[row][col] = new GameItem('O');
 			}	
 		}
+//		while (true) break once Wumpus is placed
+		while (true) {
 		int wX = randomGenerator.nextInt(4);
 		int wY = randomGenerator.nextInt(4);
-		board[wX][wY] = new Wumpus('W');
+			if (board[wX][wY].equals(null)){
+				board[wX][wY] = new Wumpus('W');	
+			}
+			break;
+		}
+		
+//		while (count <= 3) for gold and pits
 		
 		// while loop
 //		Random  randomGenerator  =  new  Random();
-//		int row = randomGenerator.nextInt(3) + 1;
-//		int col = randomGenerator.nextInt(3) + 1;
+//		int row = randomGenerator.nextInt(4);
+//		int col = randomGenerator.nextInt(4);
 //		randomly place items not where player starts [0][0]
 //		place wumpus first
 //		place pits checking for wumpus
