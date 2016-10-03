@@ -8,4 +8,10 @@ public class ClearGround extends GameItem {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public void display() {
+		Character.toString(c);
+		
+	}
+
 }

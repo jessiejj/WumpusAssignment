@@ -63,7 +63,7 @@ public class Game { //has 2d array of GameItem called board
 		while (true) {
 		int wX = randomGenerator.nextInt(4);
 		int wY = randomGenerator.nextInt(4);
-			if (board[wX][wY].equals(null)){
+			if (board[wX][wY]==(null)){
 				board[wX][wY] = new Wumpus('W');	
 			}
 			break;
