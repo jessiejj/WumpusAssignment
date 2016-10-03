@@ -53,13 +53,12 @@ public class Game { //has 2d array of GameItem called board
 	//instantiates game board
 	//instantiates objects on the game board
 	public void setBoard() {
-//		board = new GameItem[4][4]; // would make the whole board GameItem
 		for (row = 0; row < board.length; row++) {
 			for (col = 0; col < board.length; col++) {
-//				board[row][col] = new GameItem('O');
+//				board[row][col] = new ClearGround('.');
 			}	
 		}
-//		while (true) break once Wumpus is placed
+//		check if the index generated is null, if yes place Wumpus
 		while (true) {
 		int wX = randomGenerator.nextInt(4);
 		int wY = randomGenerator.nextInt(4);
@@ -68,18 +67,36 @@ public class Game { //has 2d array of GameItem called board
 			}
 			break;
 		}
-		
-//		while (count <= 3) for gold and pits
-		
-		// while loop
-//		Random  randomGenerator  =  new  Random();
-//		int row = randomGenerator.nextInt(4);
-//		int col = randomGenerator.nextInt(4);
-//		randomly place items not where player starts [0][0]
-//		place wumpus first
-//		place pits checking for wumpus
-//		place gold checking for wumpus and pits
-//		this.board[wX][wY] = new Wumpus('W');
+//		check if index generated is null, if yes place Pit
+//		repeat until 3 pits reached
+		int pitCount = 0;		
+		while (pitCount <3){
+			int pX = randomGenerator.nextInt(4);
+			int pY = randomGenerator.nextInt(4);
+				if (board[pX][pY]==(null)){
+					board[pX][pY] = new Pit('P');	
+					pitCount ++;
+				}
+		}
+		int goldCount = 0;		
+		while (goldCount <3){
+			int gX = randomGenerator.nextInt(4);
+			int gY = randomGenerator.nextInt(4);
+				if (board[gX][gY]==(null)){
+					board[gX][gY] = new Gold('G');
+					goldCount ++;
+				}
+		}
+		int clearGroundCount = 0;		
+		while (clearGroundCount <9){
+			int cGX = randomGenerator.nextInt(4);
+			int cGY = randomGenerator.nextInt(4);
+				if (board[cGX][cGY]==(null)){
+					board[cGX][cGY] = new ClearGround('.');
+					clearGroundCount ++;
+				}
+
+		}
 	}
 	
 	//display the game board
