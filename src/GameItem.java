@@ -1,8 +1,6 @@
 public abstract class GameItem {
-	
-public GameItem gameItem;
-	
-	char c;
+
+	public char c;
 
 	public GameItem(char c) {
 		super();
