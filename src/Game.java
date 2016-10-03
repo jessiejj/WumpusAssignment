@@ -32,23 +32,23 @@ public class Game { //has 2d array of GameItem called board
 		menu();
 			
 	}
-	public void setBoard() {
-		board = new GameItem[4][4];
-		while (true) {
-			this.board[row][col] = new Wumpus('W', row, col);
-			int row = randomGenerator.nextInt(3) + 1;
-			int col = randomGenerator.nextInt(3) + 1;
-
-		}
-	//instantiates game board
-	//instantiates objects on the game board
 //	public void setBoard() {
 //		board = new GameItem[4][4];
-//		for (row = 0; row < board.length; row++) {
-//			for (col = 0; col < board.length; col++) {
-//				board[row][col] = new GameItem(row, col);
-//			}
+//		while (true) {
+//			this.board[row][col] = new Wumpus('W', row, col);
+//			int row = randomGenerator.nextInt(3) + 1;
+//			int col = randomGenerator.nextInt(3) + 1;
+//
 //		}
+	//instantiates game board
+	//instantiates objects on the game board
+	public void setBoard() {
+		board = new GameItem[4][4];
+		for (row = 0; row < board.length; row++) {
+			for (col = 0; col < board.length; col++) {
+				board[row][col] = new Wumpus('W', row, col);
+			}
+		}
 		// while loop
 //		Random  randomGenerator  =  new  Random();
 //		int row = randomGenerator.nextInt(3) + 1;

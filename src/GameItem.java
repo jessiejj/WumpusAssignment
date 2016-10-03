@@ -2,6 +2,8 @@ public class GameItem {
 	
 public GameItem gameItem;
 	
+	int row;
+	int col;
 	char c = 'O';
 
 	GameItem(char c) {
