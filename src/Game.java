@@ -93,14 +93,12 @@ public class Game { //has 2d array of GameItem called board
 					clearGroundCount ++;
 				}
 		}
-//		GOTTA FIGURE THIS OUT - I think the player the coords exist, but i cant display the location
-//		generate player position
+//		TODO
 //		while (true){
 //			int playerPosiX = randomGenerator.nextInt(4);
 //			int playerPosiY = randomGenerator.nextInt(4);
 //			if (board[playerPosiX][playerPosiY].c=='.'){
-//				System.out.print(board[row][col].displayPlayer() + " ");
-//				
+//				System.out.print(board[playerPosiX][playerPosiY] + "*" + " ");	
 //			}
 //			break;
 //		}
@@ -116,7 +114,7 @@ public class Game { //has 2d array of GameItem called board
 			System.out.println();
 		}
 	}
-	
+
 	public void  menu() {
 //		menu loop
 		boolean menuActive = true;
@@ -169,7 +167,7 @@ public class Game { //has 2d array of GameItem called board
 //	using modulus operator to wrap around the array
 //	if you provide an index greater than array length it'll wrap back to 0+
 //	using the if statement to catch negative index and take you to array length - 1
-	void move(int num, boolean isX) {
+	public void move(int num, boolean isX) {
 		if (isX == true) {
 			playerPosiX = (playerPosiX + num >= 0) ? (playerPosiX + num) % board.length : board.length - 1;
 		} 
@@ -177,7 +175,7 @@ public class Game { //has 2d array of GameItem called board
 			playerPosiY = (playerPosiY + num >= 0) ? (playerPosiY + num) % board.length : board.length - 1;
 		}
 	}
-	int checkScore() {
+	public int checkScore() {
 		if (board[playerPosiX][playerPosiY].c=='G'){
 			System.out.println("You found a piece of gold!");
 			playerScore ++;
