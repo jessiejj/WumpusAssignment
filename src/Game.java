@@ -42,6 +42,7 @@ public class Game { //has 2d array of GameItem called board
 //			senseNearBy();
 			checkScore();
 			menu();
+			playerStatus();
 		}
 		
 	}
@@ -120,7 +121,7 @@ public class Game { //has 2d array of GameItem called board
 //		menu loop
 		boolean menuActive = true;
 	    	while (menuActive){
-	    		try {
+//	    		try {
 	    			System.out.println("=====Wumpus===== ");
 			    	System.out.println("1. Move player left");
 			   		System.out.println("2. Move player right");
@@ -134,30 +135,35 @@ public class Game { //has 2d array of GameItem called board
 			    			case 1:
 //			    				left
 			    				move(-1, true);
+			    				display();
 			    				break;
 			    			case 2:
 //			    				right
 			    				move(1, true);
+			    				display();
 			    				break;
 			    			case 3:
 //			    				up
 			    				move(-1, false);
+			    				display();
 			    				break;
 			    			case 4:
 //			    				down
 			    				move(1, false);
+			    				display();
 			    				break;
 			    			case 5:menuActive = false;
+			    				endGame();
 				                break;
 			    			default:
 			    				System.out.println("Invalid selection");	
 			    		}
 	    		}
-	    		catch(Exception ex) {
-	    			System.out.println("Invalid input");
-	    		}
-	    		selection = sc.nextInt();
-	    	}
+//	    		catch(Exception ex) {
+//	    			System.out.println("Invalid input");
+//	    		}
+//	    		selection = sc.nextInt();
+//	    	}
 	}
 //	generic move method
 //	using modulus operator to wrap around the array
@@ -166,12 +172,14 @@ public class Game { //has 2d array of GameItem called board
 	void move(int num, boolean isX) {
 		if (isX == true) {
 			playerPosiX = (playerPosiX + num >= 0) ? (playerPosiX + num) % board.length : board.length - 1;
-		} else {
+		} 
+		else {
 			playerPosiY = (playerPosiY + num >= 0) ? (playerPosiY + num) % board.length : board.length - 1;
 		}
 	}
 	int checkScore() {
 		if (board[playerPosiX][playerPosiY].c=='G'){
+			System.out.println("You found a piece of gold!");
 			playerScore ++;
 		}
 		return playerScore;
@@ -185,6 +193,27 @@ public class Game { //has 2d array of GameItem called board
 //		System.out.println("You sense a breeze");
 //		i = (i + 1) % n
 //		i = (i - 1) % n
+	}
+	
+	public void playerStatus() {
+		if (board[playerPosiX][playerPosiY].c=='W') {
+			isAlive = false;
+			System.out.println("The Wumpus ate you!");	
+		}
+		else if (board[playerPosiX][playerPosiY].c=='P') {
+			isAlive = false;
+			System.out.println("You fell in a pit and died!");
+		}
+		else {
+			isAlive = true;
+		}
+	}
+	
+	public void endGame() {
+		isAlive = false;
+		System.out.println("You quit");
+		System.out.println("With " + playerScore + " gold.");
+		System.out.println("Bye.");
 	}
 
 //	System.out.println("The Wumpus ate you!");	
