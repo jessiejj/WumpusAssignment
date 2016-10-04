@@ -4,15 +4,15 @@
 
 public class Game { //has 2d array of GameItem called board
 	
-	Scanner input = new Scanner(System.in);
-	int selection;					// user menu choice
-	int row;
-	int col;
+	Scanner sc = new Scanner(System.in);
+	public int selection;					// user menu choice
+	private int row;
+	private int col;
 	private GameItem[][] board = new GameItem[4][4];
 	public int playerScore = 0;
 	// player x and y coords
-	public int playerPosiX;
-	public int playerPosiY;
+	private int playerPosiX;
+	private int playerPosiY;
 	public boolean isAlive = true;
 	Random randomGenerator = new Random();
 	public String player = "*";
@@ -80,16 +80,19 @@ public class Game { //has 2d array of GameItem called board
 					clearGroundCount ++;
 				}
 		}
-//		generate play position
+//		GOTTA FIGURE THIS OUT - I think the player the coords exist, but i cant display the location
+//		generate player position
 //		while (true){
 //			int playerPosiX = randomGenerator.nextInt(4);
 //			int playerPosiY = randomGenerator.nextInt(4);
 //			if (board[playerPosiX][playerPosiY].c=='.'){
+//				System.out.print(board[row][col].displayPlayer() + " ");
 //				
 //			}
+//			break;
 //		}
 	}
-	
+
 	//display the game board
 	public void display() {
 		for(row = 0; row < board.length; row++) {
@@ -111,16 +114,20 @@ public class Game { //has 2d array of GameItem called board
 	    		System.out.println("4. Move player down");
 	    		System.out.println("9. Quit");
 	    		System.out.println("================");
-	    		selection = input.nextInt();
+	    		selection = sc.nextInt();
 	    			switch(selection)
 	    			{
 	    			case 1:
+	    				moveLeft();
 	    				break;
 	    			case 2:
+	    				moveRight();
 	    				break;
 	    			case 3:
+	    				moveUp();
 	    				break;
 	    			case 4:
+	    				moveDown();
 	    				break;
 	    			case 9:menuActive = false;
 		                break;
@@ -130,7 +137,42 @@ public class Game { //has 2d array of GameItem called board
 	    	}
 	}
 	
+	public void moveLeft(){
+		if (playerPosiY == 0) {
+				playerPosiY = playerPosiY + 3;
+		}
+		else {
+			playerPosiY = playerPosiY -  1;
+		}
+	}
+	public void moveRight(){
+		if (playerPosiY == 3) {
+				playerPosiY = playerPosiY - 3;
+		}
+		else {
+			playerPosiY = playerPosiY +  1;
+		}
+	}
+	public void moveUp(){
+		if (playerPosiX == 0) {
+				playerPosiY = playerPosiY + 3;
+		}
+		else {
+			playerPosiY = playerPosiY -  1;
+		}
+	}
+	public void moveDown(){
+		if (playerPosiY == 3) {
+				playerPosiY = playerPosiY - 3;
+		}
+		else {
+			playerPosiY = playerPosiY +  1;
+		}
+	}
 	int checkScore() {
+		if (board[playerPosiX][playerPosiY].c=='G'){
+			playerScore ++;
+		}
 		return playerScore;
 	}
 	
@@ -140,6 +182,8 @@ public class Game { //has 2d array of GameItem called board
 //		System.out.println("The is a vile smell on the air");
 //		System.out.println("You sense a faint glitter");
 //		System.out.println("You sense a breeze");
+//		i = (i + 1) % n
+//		i = (i - 1) % n
 	}
 
 //	System.out.println("The Wumpus ate you!");	
