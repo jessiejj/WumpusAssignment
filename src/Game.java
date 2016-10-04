@@ -23,6 +23,9 @@ public class Game { //has 2d array of GameItem called board
 //	could easily take an input from user to expand
 	private int numOfPit = 3;
 	private int numOfGold = 3;
+//	for moving player
+	public int num;
+	public boolean isX;
 	
 	public void runGame() {
 //		setBoard
@@ -127,16 +130,20 @@ public class Game { //has 2d array of GameItem called board
 			    			switch(selection)
 			    			{
 			    			case 1:
-			    				moveLeft();
+//			    				left
+			    				move(-1, true);
 			    				break;
 			    			case 2:
-			    				moveRight();
+//			    				right
+			    				move(1, true);
 			    				break;
 			    			case 3:
-			    				moveUp();
+//			    				up
+			    				move(-1, false);
 			    				break;
 			    			case 4:
-			    				moveDown();
+//			    				down
+			    				move(1, false);
 			    				break;
 			    			case 5:menuActive = false;
 				                break;
@@ -150,48 +157,15 @@ public class Game { //has 2d array of GameItem called board
 	    		selection = sc.nextInt();
 	    	}
 	}
-	
-//	player movement methods
-//	move 1 tile, unless you're on the edge, else move to the other side
-	public void moveLeft(){
-			if (playerPosiY == 0) {
-					playerPosiY = playerPosiY + (board.length - 1);
-			}
-			else {
-				playerPosiY = playerPosiY -  1;
-			}
-//			TODO
-//			playerPosiY = (playerPosiY - 1) %board.length;
-	}
-	public void moveRight(){
-		if (playerPosiY == 3) {
-				playerPosiY = playerPosiY - (board.length - 1);
+//	generic move method
+//	eg to move left
+//	you would -1 from current position index, but if that is less than zero, your new position will be 1 less than the size of the array
+	void move(int num, boolean isX) {
+		if (isX == true) {
+			playerPosiX = (playerPosiX + num >= 0) ? (playerPosiX + num) % board.length : board.length - 1;
+		} else {
+			playerPosiY = (playerPosiY + num >= 0) ? (playerPosiY + num) % board.length : board.length - 1;
 		}
-		else {
-			playerPosiY = playerPosiY +  1;
-		}
-//		TODO
-//		playerPosiY = (playerPosiY + 1) %board.length;
-	}
-	public void moveUp(){
-		if (playerPosiX == 0) {
-				playerPosiY = playerPosiY + (board.length - 1);
-		}
-		else {
-			playerPosiY = playerPosiY -  1;
-		}
-//		TODO
-//		playerPosiX = (playerPosiX - 1) %board.length;
-	}
-	public void moveDown(){
-		if (playerPosiY == 3) {
-				playerPosiY = playerPosiY - (board.length - 1);
-		}
-		else {
-			playerPosiY = playerPosiY +  1;
-		}
-//		TODO
-//		playerPosiX = (playerPosiX + 1) %board.length;
 	}
 	int checkScore() {
 		if (board[playerPosiX][playerPosiY].c=='G'){
