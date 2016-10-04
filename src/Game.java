@@ -23,6 +23,7 @@ public class Game { //has 2d array of GameItem called board
 //	could easily take an input from user to expand
 	private int numOfPit = 3;
 	private int numOfGold = 3;
+	private int numOfWump = 1;
 //	for moving player
 	public int num;
 	public boolean isX;
@@ -53,13 +54,14 @@ public class Game { //has 2d array of GameItem called board
 			}	
 		}
 //		check if the index generated is null, if yes place Wumpus
-		while (true) {
+		int wumpCount = 0;
+		while (wumpCount < numOfWump) {
 		int wX = randomGenerator.nextInt(board.length);
 		int wY = randomGenerator.nextInt(board.length);
 			if (board[wX][wY]==(null)){
-				board[wX][wY] = new Wumpus('W');	
+				board[wX][wY] = new Wumpus('W');
+				wumpCount++;
 			}
-			break;
 		}
 //		check if index generated is null, if yes place Pit
 //		repeat until 3 pits reached
@@ -82,7 +84,7 @@ public class Game { //has 2d array of GameItem called board
 				}
 		}
 		int clearGroundCount = 0;		
-		while (clearGroundCount <9){
+		while (clearGroundCount < ((board.length * board.length) - numOfGold - numOfPit - numOfWump)){
 			int cGX = randomGenerator.nextInt(board.length);
 			int cGY = randomGenerator.nextInt(board.length);
 				if (board[cGX][cGY]==(null)){
