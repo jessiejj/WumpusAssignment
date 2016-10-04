@@ -8,35 +8,42 @@ public class Game { //has 2d array of GameItem called board
 	public int selection;					// user menu choice
 	private int row;
 	private int col;
-	private GameItem[][] board = new GameItem[4][4];
+//	easier to change the size of the board
+//	Could easily take an input from player for board size
+	private int boardSize = 4;
+	private GameItem[][] board = new GameItem[boardSize][boardSize];
 	public int playerScore = 0;
-	// player x and y coords
+//	player x and y coords
 	private int playerPosiX;
 	private int playerPosiY;
 	public boolean isAlive = true;
 	Random randomGenerator = new Random();
 	public String player = "*";
+//	expandable number of obstacles and rewards
+//	could easily take an input from user to expand
+	private int numOfPit = 3;
+	private int numOfGold = 3;
 	
 	public void runGame() {
-		// setBoard
-		//display the board
-		//check score
-		//sense nearby
-		// present menu
-		//process user decision
-		//display board again
+//		setBoard
+//		display the board
+//		check score
+//		sense nearby
+//		present menu
+//		process user decision
+//		display board again
 		setBoard();
 		while (isAlive == true) {
 			display();
+//			senseNearBy();
 			checkScore();
 			menu();
 		}
-
-			
+		
 	}
 
-	//instantiates game board
-	//instantiates objects on the game board
+//	instantiates game board
+//	instantiates objects on the game board
 	public void setBoard() {
 		for (row = 0; row < board.length; row++) {
 			for (col = 0; col < board.length; col++) {
@@ -44,8 +51,8 @@ public class Game { //has 2d array of GameItem called board
 		}
 //		check if the index generated is null, if yes place Wumpus
 		while (true) {
-		int wX = randomGenerator.nextInt(4);
-		int wY = randomGenerator.nextInt(4);
+		int wX = randomGenerator.nextInt(board.length);
+		int wY = randomGenerator.nextInt(board.length);
 			if (board[wX][wY]==(null)){
 				board[wX][wY] = new Wumpus('W');	
 			}
@@ -54,18 +61,18 @@ public class Game { //has 2d array of GameItem called board
 //		check if index generated is null, if yes place Pit
 //		repeat until 3 pits reached
 		int pitCount = 0;		
-		while (pitCount <3){
-			int pX = randomGenerator.nextInt(4);
-			int pY = randomGenerator.nextInt(4);
+		while (pitCount <numOfPit){
+			int pX = randomGenerator.nextInt(board.length);
+			int pY = randomGenerator.nextInt(board.length);
 				if (board[pX][pY]==(null)){
 					board[pX][pY] = new Pit('P');	
 					pitCount ++;
 				}
 		}
 		int goldCount = 0;		
-		while (goldCount <3){
-			int gX = randomGenerator.nextInt(4);
-			int gY = randomGenerator.nextInt(4);
+		while (goldCount <numOfGold){
+			int gX = randomGenerator.nextInt(board.length);
+			int gY = randomGenerator.nextInt(board.length);
 				if (board[gX][gY]==(null)){
 					board[gX][gY] = new Gold('G');
 					goldCount ++;
@@ -73,8 +80,8 @@ public class Game { //has 2d array of GameItem called board
 		}
 		int clearGroundCount = 0;		
 		while (clearGroundCount <9){
-			int cGX = randomGenerator.nextInt(4);
-			int cGY = randomGenerator.nextInt(4);
+			int cGX = randomGenerator.nextInt(board.length);
+			int cGY = randomGenerator.nextInt(board.length);
 				if (board[cGX][cGY]==(null)){
 					board[cGX][cGY] = new ClearGround('.');
 					clearGroundCount ++;
@@ -93,7 +100,8 @@ public class Game { //has 2d array of GameItem called board
 //		}
 	}
 
-	//display the game board
+//	display the game board
+//	iterate through rows and cols and display GameItem at that index + a space
 	public void display() {
 		for(row = 0; row < board.length; row++) {
 			for(col = 0; col < board.length; col++) {
@@ -104,70 +112,86 @@ public class Game { //has 2d array of GameItem called board
 	}
 	
 	public void  menu() {
-		// switch based on other menus i've got
-		boolean menuActive = true; // menu loop
+//		menu loop
+		boolean menuActive = true;
 	    	while (menuActive){
-	    		System.out.println("=====Wumpus===== ");
-	    		System.out.println("1. Move player left");
-	    		System.out.println("2. Move player right");
-	    		System.out.println("3. Move player up");
-	    		System.out.println("4. Move player down");
-	    		System.out.println("9. Quit");
-	    		System.out.println("================");
-	    		selection = sc.nextInt();
-	    			switch(selection)
-	    			{
-	    			case 1:
-	    				moveLeft();
-	    				break;
-	    			case 2:
-	    				moveRight();
-	    				break;
-	    			case 3:
-	    				moveUp();
-	    				break;
-	    			case 4:
-	    				moveDown();
-	    				break;
-	    			case 9:menuActive = false;
-		                break;
-	    			default:
-	    				System.out.println("Invalid selection");	
+	    		try {
+	    			System.out.println("=====Wumpus===== ");
+			    	System.out.println("1. Move player left");
+			   		System.out.println("2. Move player right");
+			   		System.out.println("3. Move player up");
+			   		System.out.println("4. Move player down");
+			   		System.out.println("9. Quit");
+		    		System.out.println("================");
+		    		selection = sc.nextInt();
+			    			switch(selection)
+			    			{
+			    			case 1:
+			    				moveLeft();
+			    				break;
+			    			case 2:
+			    				moveRight();
+			    				break;
+			    			case 3:
+			    				moveUp();
+			    				break;
+			    			case 4:
+			    				moveDown();
+			    				break;
+			    			case 9:menuActive = false;
+				                break;
+			    			default:
+			    				System.out.println("Invalid selection");	
+			    		}
 	    		}
+	    		catch(Exception ex) {
+	    			System.out.println("Invalid input");
+	    		}
+	    		selection = sc.nextInt();
 	    	}
 	}
 	
+//	player movement methods
+//	move 1 tile, unless you're on the edge, else move to the other side
 	public void moveLeft(){
-		if (playerPosiY == 0) {
-				playerPosiY = playerPosiY + 3;
-		}
-		else {
-			playerPosiY = playerPosiY -  1;
-		}
+			if (playerPosiY == 0) {
+					playerPosiY = playerPosiY + (board.length - 1);
+			}
+			else {
+				playerPosiY = playerPosiY -  1;
+			}
+//			TODO
+//			playerPosiY = (playerPosiY - 1) %board.length;
 	}
 	public void moveRight(){
 		if (playerPosiY == 3) {
-				playerPosiY = playerPosiY - 3;
+				playerPosiY = playerPosiY - (board.length - 1);
 		}
 		else {
 			playerPosiY = playerPosiY +  1;
 		}
+//		TODO
+//		playerPosiY = (playerPosiY + 1) %board.length;
 	}
 	public void moveUp(){
 		if (playerPosiX == 0) {
-				playerPosiY = playerPosiY + 3;
+				playerPosiY = playerPosiY + (board.length - 1);
 		}
 		else {
 			playerPosiY = playerPosiY -  1;
 		}
+//		TODO
+//		playerPosiX = (playerPosiX - 1) %board.length;
 	}
 	public void moveDown(){
 		if (playerPosiY == 3) {
-				playerPosiY = playerPosiY - 3;
+				playerPosiY = playerPosiY - (board.length - 1);
 		}
 		else {
 			playerPosiY = playerPosiY +  1;
 		}
+//		TODO
+//		playerPosiX = (playerPosiX + 1) %board.length;
 	}
 	int checkScore() {
 		if (board[playerPosiX][playerPosiY].c=='G'){
