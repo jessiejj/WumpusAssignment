@@ -100,6 +100,7 @@ public class Game { //has 2d array of GameItem called board
 	public void display() {
 		for(row = 0; row < board.length; row++) {
 			for(col = 0; col < board.length; col++) {
+//				if else, check player and display
 				System.out.print(board[row][col].display() + " ");
 			}
 			System.out.println();
