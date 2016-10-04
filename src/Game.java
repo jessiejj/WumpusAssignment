@@ -121,7 +121,7 @@ public class Game { //has 2d array of GameItem called board
 			   		System.out.println("2. Move player right");
 			   		System.out.println("3. Move player up");
 			   		System.out.println("4. Move player down");
-			   		System.out.println("9. Quit");
+			   		System.out.println("5. Quit");
 		    		System.out.println("================");
 		    		selection = sc.nextInt();
 			    			switch(selection)
@@ -138,7 +138,7 @@ public class Game { //has 2d array of GameItem called board
 			    			case 4:
 			    				moveDown();
 			    				break;
-			    			case 9:menuActive = false;
+			    			case 5:menuActive = false;
 				                break;
 			    			default:
 			    				System.out.println("Invalid selection");	
