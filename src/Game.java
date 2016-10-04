@@ -2,7 +2,7 @@
  import java.util.Scanner;
  import java.util.Random;
 
-public class Game { //has 2d array of GameItem called board
+public class Game {
 	
 	Scanner sc = new Scanner(System.in);
 	public int selection;					// user menu choice
@@ -27,6 +27,8 @@ public class Game { //has 2d array of GameItem called board
 //	for moving player
 	public int num;
 	public boolean isX;
+//	set player
+	public boolean isSet = false;
 	
 	public void runGame() {
 //		setBoard
@@ -37,10 +39,11 @@ public class Game { //has 2d array of GameItem called board
 //		process user decision
 //		display board again
 		setBoard();
+		setPlayer();
 		while (isAlive == true) {
 			display();
 //			senseNearBy();
-			checkScore();
+			foundGold();
 			menu();
 			playerStatus();
 		}
@@ -65,7 +68,7 @@ public class Game { //has 2d array of GameItem called board
 			}
 		}
 //		check if index generated is null, if yes place Pit
-//		repeat until 3 pits reached
+//		repeat until 3 pits reached 
 		int pitCount = 0;		
 		while (pitCount < numOfPit){
 			int pX = randomGenerator.nextInt(board.length);
@@ -94,6 +97,26 @@ public class Game { //has 2d array of GameItem called board
 				}
 		}
 	}
+	void setPlayer() {
+		while (isSet = false) {
+			
+			int playerPosiX = randomGenerator.nextInt(board.length);
+			int playerPosiY = randomGenerator.nextInt(board.length);
+			
+			if (board[playerPosiX][playerPosiY].c=='G'){
+				isSet = false;
+			}
+			else if (board[playerPosiX][playerPosiY].c=='P'){
+				isSet = false;
+			}
+			else if (board[playerPosiX][playerPosiY].c=='W'){
+				isSet = false;
+			}
+			else{
+				isSet = true;
+			}
+		}
+	}
 
 //	display the game board
 //	iterate through rows and cols and display GameItem at that index + a space
@@ -101,7 +124,12 @@ public class Game { //has 2d array of GameItem called board
 		for(row = 0; row < board.length; row++) {
 			for(col = 0; col < board.length; col++) {
 //				if else, check player and display
+				if (board[row][col] == board[playerPosiX][playerPosiY]){
+					System.out.print(board[playerPosiX][playerPosiY] + "*" + " ");
+				}
+				else {
 				System.out.print(board[row][col].display() + " ");
+				}
 			}
 			System.out.println();
 		}
@@ -177,9 +205,10 @@ public class Game { //has 2d array of GameItem called board
 			playerPosiY = (playerPosiY + num >= 0) ? (playerPosiY + num) % board.length : board.length - 1;
 		}
 	}
-	public int checkScore() {
+	public int foundGold() {
 		if (board[playerPosiX][playerPosiY].c=='G'){
 			System.out.println("You found a piece of gold!");
+			
 			playerScore ++;
 		}
 		return playerScore;
@@ -214,9 +243,4 @@ public class Game { //has 2d array of GameItem called board
 		System.out.println("With " + playerScore + " gold.");
 		System.out.println("Bye.");
 	}
-
-//	System.out.println("The Wumpus ate you!");	
-//	System.out.println("You found a piece of gold!");
-//	System.out.println("You fell in a pit and died!");	
-
 }
