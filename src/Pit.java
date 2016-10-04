@@ -1,13 +1,18 @@
 
 public class Pit extends GameItem {
+	
+	char c = 'P';
+	char p = '*';
 
 	public Pit(char c) {
 		super(c);
-		// TODO Auto-generated constructor stub
 	}
 
 	public char display() {
 		return c;
 	}
-
+	
+	public char displayPlayer() {
+		return p;
+	}
 }

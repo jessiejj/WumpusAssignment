@@ -1,15 +1,18 @@
 
 public class Gold extends GameItem {
+	
+	char c = 'G';
+	char p = '*';
 
 	public Gold(char c) {
 		super(c);
-		// TODO Auto-generated constructor stub
 	}
-
-	@Override
+	
 	public char display() {
 		return c;
 	}
-
-
+	
+	public char displayPlayer() {
+		return p;
+	}
 }
