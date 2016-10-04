@@ -93,15 +93,6 @@ public class Game { //has 2d array of GameItem called board
 					clearGroundCount ++;
 				}
 		}
-//		TODO
-//		while (true){
-//			int playerPosiX = randomGenerator.nextInt(4);
-//			int playerPosiY = randomGenerator.nextInt(4);
-//			if (board[playerPosiX][playerPosiY].c=='.'){
-//				System.out.print(board[playerPosiX][playerPosiY] + "*" + " ");	
-//			}
-//			break;
-//		}
 	}
 
 //	display the game board
@@ -113,6 +104,15 @@ public class Game { //has 2d array of GameItem called board
 			}
 			System.out.println();
 		}
+//		TODO
+//		while (true){
+//			int playerPosiX = randomGenerator.nextInt(4);
+//			int playerPosiY = randomGenerator.nextInt(4);
+//			if (board[playerPosiX][playerPosiY].c=='.'){
+//				System.out.print(board[playerPosiX][playerPosiY] + "*" + " ");	
+//			}
+//			break;
+//		}
 	}
 
 	public void  menu() {
@@ -163,6 +163,7 @@ public class Game { //has 2d array of GameItem called board
 //	    		selection = sc.nextInt();
 //	    	}
 	}
+	
 //	generic move method
 //	using modulus operator to wrap around the array
 //	if you provide an index greater than array length it'll wrap back to 0+
@@ -182,7 +183,6 @@ public class Game { //has 2d array of GameItem called board
 		}
 		return playerScore;
 	}
-	
 	
 	public void senseNearby() {
 //		 if else player location?
