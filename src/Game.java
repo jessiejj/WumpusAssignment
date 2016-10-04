@@ -66,7 +66,7 @@ public class Game { //has 2d array of GameItem called board
 //		check if index generated is null, if yes place Pit
 //		repeat until 3 pits reached
 		int pitCount = 0;		
-		while (pitCount <numOfPit){
+		while (pitCount < numOfPit){
 			int pX = randomGenerator.nextInt(board.length);
 			int pY = randomGenerator.nextInt(board.length);
 				if (board[pX][pY]==(null)){
@@ -75,7 +75,7 @@ public class Game { //has 2d array of GameItem called board
 				}
 		}
 		int goldCount = 0;		
-		while (goldCount <numOfGold){
+		while (goldCount < numOfGold){
 			int gX = randomGenerator.nextInt(board.length);
 			int gY = randomGenerator.nextInt(board.length);
 				if (board[gX][gY]==(null)){
@@ -160,8 +160,9 @@ public class Game { //has 2d array of GameItem called board
 	    	}
 	}
 //	generic move method
-//	eg to move left
-//	you would -1 from current position index, but if that is less than zero, your new position will be 1 less than the size of the array
+//	using modulus operator to wrap around the array
+//	if you provide an index greater than array length it'll wrap back to 0+
+//	using the if statement to catch negative index and take you to array length - 1
 	void move(int num, boolean isX) {
 		if (isX == true) {
 			playerPosiX = (playerPosiX + num >= 0) ? (playerPosiX + num) % board.length : board.length - 1;
