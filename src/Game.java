@@ -146,25 +146,21 @@ public class Game {
 	    		selection = sc.nextInt();
 		    			switch(selection)
 		    			{
-		    			case 1:
+		    			case 1:menuActive = false;
 //		    				left
 		    				move(-1, false);
-		    				endTurn();
 		    				break;
-		    			case 2:
+		    			case 2:menuActive = false;
 //		    				right
 		    				move(1, false);
-		    				endTurn();
 		    				break;
-		    			case 3:
+		    			case 3:menuActive = false;
 //		    				up
 		    				move(-1, true);
-		    				endTurn();
 		    				break;
-		    			case 4:
+		    			case 4:menuActive = false;
 //		    				down
 		    				move(1, true);
-		    				endTurn();
 		    				break;
 		    			case 5:menuActive = false;
 		    			endGame();
@@ -179,9 +175,9 @@ public class Game {
 //    		selection = sc.nextInt();
     	}
 	
-	public void endTurn(){
-		newTurn();
-	}
+//	public void endTurn(){
+//		newTurn();
+//	}
 	
 //	generic move method
 //	using modulus operator to wrap around the array
@@ -219,6 +215,7 @@ public class Game {
 			System.out.println("You found a piece of gold!");			
 			playerScore ++;
 			isAlive = true;
+			board[playerPosiX][playerPosiY] = new ClearGround('.');
 		}
 		else{
 			isAlive = true;
