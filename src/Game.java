@@ -22,7 +22,7 @@ public class Game {
 //	expandable number of obstacles and rewards
 //	could easily take an input from user to expand
 	private int numOfPit = 3;
-	private int numOfGold = 3;
+	private int numOfGold = 1;
 	private int numOfWump = 1;
 //	for moving player
 	public int num;
@@ -81,7 +81,8 @@ public class Game {
 					pitCount ++;
 				}
 		}
-		int goldCount = 0;		
+		int goldCount = 0;	
+		numOfGold = (randomGenerator.nextInt(board.length -1) + 1);
 		while (goldCount < numOfGold){
 			int gX = randomGenerator.nextInt(board.length);
 			int gY = randomGenerator.nextInt(board.length);
