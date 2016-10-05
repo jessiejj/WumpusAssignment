@@ -42,6 +42,7 @@ public class Game {
 	
 	public void newTurn(){
 	    display();
+	    senseNearby();
 	    menu();
 		playerStatus();
 		checkScore();
@@ -50,8 +51,8 @@ public class Game {
 	public void checkScore(){
 		if (playerScore == numOfGold){
 			gameActive = false;
-			System.out.println("You won!");
 			System.out.println("You found all the gold!");
+			System.out.println("You won!");
 		}
 	}
 
@@ -131,53 +132,58 @@ public class Game {
 		}
 	}
 
-	public void  menu() {
+	public void menu() {
 //		menu loop
 		boolean menuActive = true;
     	while (menuActive){
-//    		try {
-    			System.out.println("=====Wumpus===== ");
-		    	System.out.println("1. Move player left");
-		   		System.out.println("2. Move player right");
-		   		System.out.println("3. Move player up");
-		   		System.out.println("4. Move player down");
-		   		System.out.println("5. Quit");
-	    		System.out.println("================");
-	    		selection = sc.nextInt();
-		    			switch(selection)
-		    			{
-		    			case 1:menuActive = false;
-//		    				left
-		    				move(-1, false);
-		    				break;
-		    			case 2:menuActive = false;
-//		    				right
-		    				move(1, false);
-		    				break;
-		    			case 3:menuActive = false;
-//		    				up
-		    				move(-1, true);
-		    				break;
-		    			case 4:menuActive = false;
-//		    				down
-		    				move(1, true);
-		    				break;
-		    			case 5:menuActive = false;
-		    			endGame();
-			                break;
-		    			default:
-		    				System.out.println("Invalid selection");	
-		    		}
+    		
+    		try {
+        		System.out.println("=====Wumpus===== ");
+    	    	System.out.println("1. Move player left");
+    	   		System.out.println("2. Move player right");
+    	   		System.out.println("3. Move player up");
+    	   		System.out.println("4. Move player down");
+    	   		System.out.println("5. Quit");
+        		System.out.println("================");
+    			selection = sc.nextInt();
+    			if (selection == 1) {
+//    				left
+    				move(-1, false);
+    				menuActive = false;
+    			}
+    			else if (selection == 2) {
+//    				right
+    				move(1, false);
+    				menuActive = false;
+    			}
+    			else if (selection == 3) {
+//    				up
+    				move(-1, true);
+    				menuActive = false;
+    			}
+    			else if (selection == 4) {
+//    				down
+    				move(1, true);
+    				menuActive = false;
+    			}
+    			else if (selection == 5) {
+//    				exit
+    				endGame();
+    				menuActive = false;
+    			}
+    			else{
+    				System.out.println("Error, invalid input");
+    				menuActive = false;
+    			}
+
     		}
-//    		catch(Exception ex) {
-//    			System.out.println("Invalid input");
-//    		}
-//    		selection = sc.nextInt();
+    		catch(Exception ex) {
+    			System.out.println("Invalid input");
+    			menuActive = false;
+    		}
+    		sc.nextLine();
     	}
-	
-//	public void endTurn(){
-//		newTurn();
-//	}
+    }
 	
 //	generic move method
 //	using modulus operator to wrap around the array
@@ -193,13 +199,112 @@ public class Game {
 	}
 	
 	public void senseNearby() {
-//		 if else player location?
-//		System.out.println("The is a vile smell on the air");
-//		System.out.println("You sense a faint glitter");
-//		System.out.println("You sense a breeze");
-//		i = (i + 1) % n
-//		i = (i - 1) % n
-	}
+//		check left
+		if ((playerPosiY -1) > 0){
+			if (board[playerPosiX][playerPosiY -1].c=='W'){
+			System.out.println("There is a vile smell on the air");
+			}
+			else if (board[playerPosiX][playerPosiY -1].c=='P'){
+				System.out.println("You sense a breeze");
+			}
+			else if (board[playerPosiX][playerPosiY -1].c=='G'){
+				System.out.println("You sense a faint glitter");
+			}
+			else;
+		}
+//		check left if at edge
+		else if ((playerPosiY -1) < 0){
+			if (board[playerPosiX][playerPosiY + (board.length - 1)].c=='W'){
+				System.out.println("There is a vile smell on the air");
+				}
+			else if (board[playerPosiX][playerPosiY + (board.length - 1)].c=='P'){
+				System.out.println("You sense a breeze");
+				}
+			else if (board[playerPosiX][playerPosiY + (board.length - 1)].c=='G'){
+			System.out.println("You sense a faint glitter");
+			}
+			else;
+		}
+//		check right
+		if ((playerPosiY +1) < board.length){
+			if (board[playerPosiX][playerPosiY +1].c=='W'){
+			System.out.println("There is a vile smell on the air");
+			}
+			else if (board[playerPosiX][playerPosiY +1].c=='P'){
+				System.out.println("You sense a breeze");
+			}
+			else if (board[playerPosiX][playerPosiY +1].c=='G'){
+				System.out.println("You sense a faint glitter");
+			}
+			else;
+		}
+//		check right at edge
+		else if ((playerPosiY +1) > board.length){
+			if (board[playerPosiX][playerPosiY - (board.length)].c=='W'){
+				System.out.println("There is a vile smell on the air");
+				}
+			else if (board[playerPosiX][playerPosiY - (board.length)].c=='P'){
+				System.out.println("You sense a breeze");
+				}
+			else if (board[playerPosiX][playerPosiY - (board.length)].c=='G'){
+			System.out.println("You sense a faint glitter");
+			}
+			else;
+		}
+//		check up
+		if ((playerPosiX -1) > 0){
+			if (board[playerPosiX -1][playerPosiY].c=='W'){
+			System.out.println("There is a vile smell on the air");
+			}
+			else if (board[playerPosiX -1][playerPosiY].c=='P'){
+				System.out.println("You sense a breeze");
+			}
+			else if (board[playerPosiX -1][playerPosiY].c=='G'){
+				System.out.println("You sense a faint glitter");
+			}
+			else;
+		}
+//		check up at edge
+		else if ((playerPosiX -1) < 0){
+			if (board[playerPosiX + (board.length - 1)][playerPosiY].c=='W'){
+				System.out.println("There is a vile smell on the air");
+				}
+			else if (board[playerPosiX + (board.length - 1)][playerPosiY].c=='P'){
+				System.out.println("You sense a breeze");
+				}
+			else if (board[playerPosiX + (board.length - 1)][playerPosiY].c=='G'){
+			System.out.println("You sense a faint glitter");
+			}
+			else;
+		}
+//		check down
+		if ((playerPosiX +1) < board.length){
+			if (board[playerPosiX +1][playerPosiY].c=='W'){
+			System.out.println("There is a vile smell on the air");
+			}
+			else if (board[playerPosiX +1][playerPosiY].c=='P'){
+				System.out.println("You sense a breeze");
+			}
+			else if (board[playerPosiX +1][playerPosiY].c=='G'){
+				System.out.println("You sense a faint glitter");
+			}
+			else;
+		}		
+//		check down at edge
+		else if ((playerPosiX +1) > board.length){
+			if (board[playerPosiX - (board.length)][playerPosiY].c=='W'){
+				System.out.println("There is a vile smell on the air");
+				}
+			else if (board[playerPosiX - (board.length)][playerPosiY].c=='P'){
+				System.out.println("You sense a breeze");
+				}
+			else if (board[playerPosiX - (board.length)][playerPosiY].c=='G'){
+			System.out.println("You sense a faint glitter");
+			}
+			else;
+		}
+		else;
+	}	
 	
 	public void playerStatus() {
 		
