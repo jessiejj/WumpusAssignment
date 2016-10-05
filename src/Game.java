@@ -16,9 +16,9 @@ public class Game {
 //	player x and y coords
 	private int playerPosiX;
 	private int playerPosiY;
+	public boolean gameActive = true;
 	public boolean isAlive = true;
 	Random randomGenerator = new Random();
-	public String player = "*";
 //	expandable number of obstacles and rewards
 //	could easily take an input from user to expand
 	private int numOfPit = 3;
@@ -29,6 +29,7 @@ public class Game {
 	public boolean isX;
 //	set player
 	public boolean isSet = false;
+	public int currentTurn = 0;
 	
 	public void runGame() {
 //		setBoard
@@ -40,29 +41,47 @@ public class Game {
 //		display board again
 		setBoard();
 		setPlayer();
-		while (isAlive == true) {
-			display();
-//			senseNearBy();
-			foundGold();
-			menu();
-			playerStatus();
+		while (gameActive == true) {
+			if (isAlive = true) {
+			newTurn();
+			}
+			else {
+				endGame();
+			}
 		}
 		
+	}
+	
+	public void newTurn(){
+		playerStatus();
+		checkScore();
+		if (isAlive == true && gameActive == true){
+//			senseNearBy();
+			display();
+			menu();
+		}
+		else{
+			endGame();
+		}
+
+	}
+	public void checkScore(){
+		if (playerScore == numOfGold){
+			gameActive = false;
+			System.out.println("You won!");
+			System.out.println("You found all the gold!");
+		}
 	}
 
 //	instantiates game board
 //	instantiates objects on the game board
 	public void setBoard() {
-		for (row = 0; row < board.length; row++) {
-			for (col = 0; col < board.length; col++) {
-			}	
-		}
 //		check if the index generated is null, if yes place Wumpus
 		int wumpCount = 0;
 		while (wumpCount < numOfWump) {
 		int wX = randomGenerator.nextInt(board.length);
 		int wY = randomGenerator.nextInt(board.length);
-			if (board[wX][wY]==(null)){
+			if (board[wX][wY]==null){
 				board[wX][wY] = new Wumpus('W');
 				wumpCount++;
 			}
@@ -73,7 +92,7 @@ public class Game {
 		while (pitCount < numOfPit){
 			int pX = randomGenerator.nextInt(board.length);
 			int pY = randomGenerator.nextInt(board.length);
-				if (board[pX][pY]==(null)){
+				if (board[pX][pY]==null){
 					board[pX][pY] = new Pit('P');	
 					pitCount ++;
 				}
@@ -82,50 +101,42 @@ public class Game {
 		while (goldCount < numOfGold){
 			int gX = randomGenerator.nextInt(board.length);
 			int gY = randomGenerator.nextInt(board.length);
-				if (board[gX][gY]==(null)){
+				if (board[gX][gY]==null){
 					board[gX][gY] = new Gold('G');
 					goldCount ++;
 				}
 		}
-		int clearGroundCount = 0;		
-		while (clearGroundCount < ((board.length * board.length) - numOfGold - numOfPit - numOfWump)){
-			int cGX = randomGenerator.nextInt(board.length);
-			int cGY = randomGenerator.nextInt(board.length);
-				if (board[cGX][cGY]==(null)){
-					board[cGX][cGY] = new ClearGround('.');
-					clearGroundCount ++;
+		for (row = 0; row < board.length; row++) {
+			for (col = 0; col < board.length; col++) {
+				if (board[row][col]==null){
+					board[row][col] = new ClearGround('.');
 				}
+			}	
 		}
 	}
 	void setPlayer() {
-		while (isSet = false) {
+		while (isSet == false) {
 			
-			int playerPosiX = randomGenerator.nextInt(board.length);
-			int playerPosiY = randomGenerator.nextInt(board.length);
+			playerPosiX = randomGenerator.nextInt(board.length);
+			playerPosiY = randomGenerator.nextInt(board.length);
 			
-			if (board[playerPosiX][playerPosiY].c=='G'){
-				isSet = false;
-			}
-			else if (board[playerPosiX][playerPosiY].c=='P'){
-				isSet = false;
-			}
-			else if (board[playerPosiX][playerPosiY].c=='W'){
-				isSet = false;
+			if (board[playerPosiX][playerPosiY].c=='.'){
+				isSet = true;
 			}
 			else{
-				isSet = true;
+				isSet = false;
 			}
 		}
 	}
 
 //	display the game board
-//	iterate through rows and cols and display GameItem at that index + a space
+//	iterate through rows and cols and display GameItem at that index
 	public void display() {
 		for(row = 0; row < board.length; row++) {
 			for(col = 0; col < board.length; col++) {
 //				if else, check player and display
-				if (board[row][col] == board[playerPosiX][playerPosiY]){
-					System.out.print(board[playerPosiX][playerPosiY] + "*" + " ");
+				if (board[playerPosiX][playerPosiY] == board[row][col]){
+					System.out.print(board[playerPosiX][playerPosiY].displayPlayer() + " ");
 				}
 				else {
 				System.out.print(board[row][col].display() + " ");
@@ -133,64 +144,58 @@ public class Game {
 			}
 			System.out.println();
 		}
-//		TODO
-//		while (true){
-//			int playerPosiX = randomGenerator.nextInt(4);
-//			int playerPosiY = randomGenerator.nextInt(4);
-//			if (board[playerPosiX][playerPosiY].c=='.'){
-//				System.out.print(board[playerPosiX][playerPosiY] + "*" + " ");	
-//			}
-//			break;
-//		}
 	}
 
 	public void  menu() {
 //		menu loop
 		boolean menuActive = true;
-	    	while (menuActive){
-//	    		try {
-	    			System.out.println("=====Wumpus===== ");
-			    	System.out.println("1. Move player left");
-			   		System.out.println("2. Move player right");
-			   		System.out.println("3. Move player up");
-			   		System.out.println("4. Move player down");
-			   		System.out.println("5. Quit");
-		    		System.out.println("================");
-		    		selection = sc.nextInt();
-			    			switch(selection)
-			    			{
-			    			case 1:
-//			    				left
-			    				move(-1, true);
-			    				display();
-			    				break;
-			    			case 2:
-//			    				right
-			    				move(1, true);
-			    				display();
-			    				break;
-			    			case 3:
-//			    				up
-			    				move(-1, false);
-			    				display();
-			    				break;
-			    			case 4:
-//			    				down
-			    				move(1, false);
-			    				display();
-			    				break;
-			    			case 5:menuActive = false;
-			    				endGame();
-				                break;
-			    			default:
-			    				System.out.println("Invalid selection");	
-			    		}
-	    		}
-//	    		catch(Exception ex) {
-//	    			System.out.println("Invalid input");
-//	    		}
-//	    		selection = sc.nextInt();
-//	    	}
+    	while (menuActive){
+//    		try {
+    			System.out.println("=====Wumpus===== ");
+		    	System.out.println("1. Move player left");
+		   		System.out.println("2. Move player right");
+		   		System.out.println("3. Move player up");
+		   		System.out.println("4. Move player down");
+		   		System.out.println("5. Quit");
+	    		System.out.println("================");
+	    		selection = sc.nextInt();
+		    			switch(selection)
+		    			{
+		    			case 1:
+//		    				left
+		    				move(-1, false);
+		    				endTurn();
+		    				break;
+		    			case 2:
+//		    				right
+		    				move(1, false);
+		    				endTurn();
+		    				break;
+		    			case 3:
+//		    				up
+		    				move(-1, true);
+		    				endTurn();
+		    				break;
+		    			case 4:
+//		    				down
+		    				move(1, true);
+		    				endTurn();
+		    				break;
+		    			case 5:menuActive = false;
+		    			endGame();
+			                break;
+		    			default:
+		    				System.out.println("Invalid selection");	
+		    		}
+    		}
+//    		catch(Exception ex) {
+//    			System.out.println("Invalid input");
+//    		}
+//    		selection = sc.nextInt();
+    	}
+	
+	public void endTurn(){
+		newTurn();
 	}
 	
 //	generic move method
@@ -205,14 +210,6 @@ public class Game {
 			playerPosiY = (playerPosiY + num >= 0) ? (playerPosiY + num) % board.length : board.length - 1;
 		}
 	}
-	public int foundGold() {
-		if (board[playerPosiX][playerPosiY].c=='G'){
-			System.out.println("You found a piece of gold!");
-			
-			playerScore ++;
-		}
-		return playerScore;
-	}
 	
 	public void senseNearby() {
 //		 if else player location?
@@ -225,22 +222,25 @@ public class Game {
 	
 	public void playerStatus() {
 		if (board[playerPosiX][playerPosiY].c=='W') {
-			isAlive = false;
 			System.out.println("The Wumpus ate you!");	
+			isAlive = false;
 		}
 		else if (board[playerPosiX][playerPosiY].c=='P') {
-			isAlive = false;
 			System.out.println("You fell in a pit and died!");
+			isAlive = false;
 		}
-		else {
+		else if (board[playerPosiX][playerPosiY].c=='G'){
+			System.out.println("You found a piece of gold!");			
+			playerScore ++;
+			isAlive = true;
+		}
+		else{
 			isAlive = true;
 		}
 	}
-	
-	public void endGame() {
-		isAlive = false;
-		System.out.println("You quit");
-		System.out.println("With " + playerScore + " gold.");
-		System.out.println("Bye.");
+	public void endGame(){
+		if (gameActive == false){
+			System.out.println("Game over");
+		}
 	}
 }
