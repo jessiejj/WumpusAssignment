@@ -205,106 +205,97 @@ public class Game {
 			if (board[playerPosiX][playerPosiY -1].c=='W'){
 			System.out.println("There is a vile smell on the air");
 			}
-			else if (board[playerPosiX][playerPosiY -1].c=='P'){
+			if (board[playerPosiX][playerPosiY -1].c=='P'){
 				System.out.println("You sense a breeze");
 			}
-			else if (board[playerPosiX][playerPosiY -1].c=='G'){
+			if (board[playerPosiX][playerPosiY -1].c=='G'){
 				System.out.println("You sense a faint glitter");
 			}
-			else;
 		}
-//		check left if at edge
-		else if ((playerPosiY -1) < 0){
+//		check left wrap around
+		if ((playerPosiY -1) < 0){
 			if (board[playerPosiX][playerPosiY + (board.length - 1)].c=='W'){
 				System.out.println("There is a vile smell on the air");
 				}
-			else if (board[playerPosiX][playerPosiY + (board.length - 1)].c=='P'){
+			if (board[playerPosiX][playerPosiY + (board.length - 1)].c=='P'){
 				System.out.println("You sense a breeze");
 				}
-			else if (board[playerPosiX][playerPosiY + (board.length - 1)].c=='G'){
+			if (board[playerPosiX][playerPosiY + (board.length - 1)].c=='G'){
 			System.out.println("You sense a faint glitter");
 			}
-			else;
 		}
 //		check right
 		if ((playerPosiY +1) < board.length){
 			if (board[playerPosiX][playerPosiY +1].c=='W'){
 			System.out.println("There is a vile smell on the air");
 			}
-			else if (board[playerPosiX][playerPosiY +1].c=='P'){
+			if (board[playerPosiX][playerPosiY +1].c=='P'){
 				System.out.println("You sense a breeze");
 			}
-			else if (board[playerPosiX][playerPosiY +1].c=='G'){
+			if (board[playerPosiX][playerPosiY +1].c=='G'){
 				System.out.println("You sense a faint glitter");
 			}
-			else;
 		}
-//		check right at edge
-		else if ((playerPosiY +1) > board.length){
+//		check right wrap around
+		if ((playerPosiY +1) > board.length){
 			if (board[playerPosiX][playerPosiY - (board.length)].c=='W'){
 				System.out.println("There is a vile smell on the air");
 				}
-			else if (board[playerPosiX][playerPosiY - (board.length)].c=='P'){
+			if (board[playerPosiX][playerPosiY - (board.length)].c=='P'){
 				System.out.println("You sense a breeze");
 				}
-			else if (board[playerPosiX][playerPosiY - (board.length)].c=='G'){
+			if (board[playerPosiX][playerPosiY - (board.length)].c=='G'){
 			System.out.println("You sense a faint glitter");
 			}
-			else;
 		}
 //		check up
 		if ((playerPosiX -1) > 0){
 			if (board[playerPosiX -1][playerPosiY].c=='W'){
 			System.out.println("There is a vile smell on the air");
 			}
-			else if (board[playerPosiX -1][playerPosiY].c=='P'){
+			if (board[playerPosiX -1][playerPosiY].c=='P'){
 				System.out.println("You sense a breeze");
 			}
-			else if (board[playerPosiX -1][playerPosiY].c=='G'){
+			if (board[playerPosiX -1][playerPosiY].c=='G'){
 				System.out.println("You sense a faint glitter");
 			}
-			else;
 		}
-//		check up at edge
-		else if ((playerPosiX -1) < 0){
+//		check up wrap around
+		if ((playerPosiX -1) < 0){
 			if (board[playerPosiX + (board.length - 1)][playerPosiY].c=='W'){
 				System.out.println("There is a vile smell on the air");
 				}
-			else if (board[playerPosiX + (board.length - 1)][playerPosiY].c=='P'){
+			if (board[playerPosiX + (board.length - 1)][playerPosiY].c=='P'){
 				System.out.println("You sense a breeze");
 				}
-			else if (board[playerPosiX + (board.length - 1)][playerPosiY].c=='G'){
+			if (board[playerPosiX + (board.length - 1)][playerPosiY].c=='G'){
 			System.out.println("You sense a faint glitter");
 			}
-			else;
 		}
 //		check down
 		if ((playerPosiX +1) < board.length){
 			if (board[playerPosiX +1][playerPosiY].c=='W'){
 			System.out.println("There is a vile smell on the air");
 			}
-			else if (board[playerPosiX +1][playerPosiY].c=='P'){
+			if (board[playerPosiX +1][playerPosiY].c=='P'){
 				System.out.println("You sense a breeze");
 			}
-			else if (board[playerPosiX +1][playerPosiY].c=='G'){
+			if (board[playerPosiX +1][playerPosiY].c=='G'){
 				System.out.println("You sense a faint glitter");
 			}
-			else;
 		}		
-//		check down at edge
-		else if ((playerPosiX +1) > board.length){
+//		check down wrap around
+		if ((playerPosiX +1) > board.length){
 			if (board[playerPosiX - (board.length)][playerPosiY].c=='W'){
 				System.out.println("There is a vile smell on the air");
 				}
-			else if (board[playerPosiX - (board.length)][playerPosiY].c=='P'){
+			if (board[playerPosiX - (board.length)][playerPosiY].c=='P'){
 				System.out.println("You sense a breeze");
 				}
-			else if (board[playerPosiX - (board.length)][playerPosiY].c=='G'){
+			if (board[playerPosiX - (board.length)][playerPosiY].c=='G'){
 			System.out.println("You sense a faint glitter");
 			}
-			else;
 		}
-		else;
 	}	
 	
 	public void playerStatus() {
