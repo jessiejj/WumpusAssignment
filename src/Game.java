@@ -32,39 +32,21 @@ public class Game {
 	public int currentTurn = 0;
 	
 	public void runGame() {
-//		setBoard
-//		display the board
-//		check score
-//		sense nearby
-//		present menu
-//		process user decision
-//		display board again
 		setBoard();
 		setPlayer();
-		while (gameActive == true) {
-			if (isAlive = true) {
+		while (gameActive == true && isAlive == true) {
 			newTurn();
-			}
-			else {
-				endGame();
-			}
 		}
-		
+		endGame();
 	}
 	
 	public void newTurn(){
+	    display();
+	    menu();
 		playerStatus();
 		checkScore();
-		if (isAlive == true && gameActive == true){
-//			senseNearBy();
-			display();
-			menu();
 		}
-		else{
-			endGame();
-		}
-
-	}
+	
 	public void checkScore(){
 		if (playerScore == numOfGold){
 			gameActive = false;
@@ -86,6 +68,7 @@ public class Game {
 				wumpCount++;
 			}
 		}
+		
 //		check if index generated is null, if yes place Pit
 //		repeat until 3 pits reached 
 		int pitCount = 0;		
@@ -114,6 +97,8 @@ public class Game {
 			}	
 		}
 	}
+	
+//	find a clearGround index and set player there
 	void setPlayer() {
 		while (isSet == false) {
 			
@@ -221,6 +206,7 @@ public class Game {
 	}
 	
 	public void playerStatus() {
+		
 		if (board[playerPosiX][playerPosiY].c=='W') {
 			System.out.println("The Wumpus ate you!");	
 			isAlive = false;
@@ -238,6 +224,7 @@ public class Game {
 			isAlive = true;
 		}
 	}
+	
 	public void endGame(){
 		if (gameActive == false){
 			System.out.println("Game over");

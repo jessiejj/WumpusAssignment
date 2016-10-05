@@ -1,6 +1,6 @@
 public abstract class GameItem {
 
-	char c;
+	public char c;
 	char p = '*';
 
 	public GameItem(char c) {

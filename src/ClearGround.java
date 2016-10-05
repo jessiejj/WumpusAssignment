@@ -1,7 +1,7 @@
 
 public class ClearGround extends GameItem {
 
-	char c = '.';
+	public char c = '.';
 	char p = '*';
 	
 	public ClearGround(char c) {

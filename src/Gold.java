@@ -1,7 +1,7 @@
 
 public class Gold extends GameItem {
 	
-	char c = 'G';
+	public char c = 'G';
 	char p = '*';
 	
 	public Gold(char c) {

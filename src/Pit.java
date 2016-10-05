@@ -1,7 +1,7 @@
 
 public class Pit extends GameItem {
 	
-	char c = 'P';
+	public char c = 'P';
 	char p = '*';
 
 	public Pit(char c) {

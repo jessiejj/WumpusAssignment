@@ -1,6 +1,6 @@
 public class Wumpus extends GameItem {
 	
-	char c = 'W';
+	public char c = 'W';
 	char p = '*';
 	
 	public Wumpus(char c) {
